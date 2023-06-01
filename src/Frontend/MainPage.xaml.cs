@@ -23,9 +23,16 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-        Application.Current.RequestedThemeChanged += (s, a) => {
-            this.DisplayAlert("Alert", "message", "cancel");
-        };
+        //Application.Current.RequestedThemeChanged += (s, a) => {
+        //    Application.Current.UserAppTheme = Application.Current.RequestedTheme;
+        //    this.DisplayAlert("Alert", Application.Current.RequestedTheme.ToString(), "cancel");
+        //    var currentPage = Application.Current.MainPage;
+        //    Application.Current.MainPage = null;
+        //    Application.Current.MainPage = currentPage;
+        //    //var activity = Microsoft.Maui.ApplicationModel.Platform.CurrentActivity;
+        //    //activity.FinishAffinity();
+        //    //activity.StartActivity(activity.Intent);
+        //};
         MainThread.BeginInvokeOnMainThread(Setup);
     }
 
