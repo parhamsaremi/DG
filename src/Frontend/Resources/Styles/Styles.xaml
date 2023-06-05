@@ -34,6 +34,13 @@
         </Setter>
     </Style>
 
+    <Style TargetType="Entry">
+        <Setter
+            Property="TextColor"
+            Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+        />
+    </Style>
+
     <Style TargetType="Label">
         <Setter
             Property="TextColor"
@@ -42,6 +49,10 @@
     </Style>
 
     <Style TargetType="Picker">
+        <Setter
+            Property="TextColor"
+            Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}"
+        />
         <Setter
             Property="TitleColor"
             Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}"
