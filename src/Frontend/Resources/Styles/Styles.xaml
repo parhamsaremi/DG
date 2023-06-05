@@ -6,16 +6,16 @@
 
 
     <Style TargetType="Button">
-        <Setter Property="TextColor" Value="{OnPlatform Android = {AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}}" />
-        <Setter Property="BackgroundColor" Value="{OnPlatform Android = {AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Primary}}}" />
+        <Setter Property="TextColor" Value="{OnPlatform Android = {StaticResource White}, iOS = {StaticResource Blue}}" />
+        <Setter Property="BackgroundColor" Value="{OnPlatform Android ={StaticResource Primary}, iOS=Transparent}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualState x:Name="Normal" />
                     <VisualState x:Name="Disabled">
                         <VisualState.Setters>
-                            <Setter Property="TextColor" Value="{OnPlatform Android = {AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}}" />
-                            <Setter Property="BackgroundColor" Value="{OnPlatform Android = {AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}}" />
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
+                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>

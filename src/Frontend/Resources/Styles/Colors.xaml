@@ -12,4 +12,5 @@
     <Color x:Key="Gray600">#404040</Color>
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
+    <Color x:Key="Blue">#4792d7</Color>
 </ResourceDictionary>
