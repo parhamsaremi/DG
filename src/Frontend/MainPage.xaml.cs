@@ -25,6 +25,13 @@ public partial class MainPage : ContentPage
         InitializeComponent();
 
         MainThread.BeginInvokeOnMainThread(Setup);
+
+        Application.Current.RequestedThemeChanged += (s, a) => {
+            if (Platform.CurrentActivity is AndroidX.AppCompat.App.AppCompatActivity activity)
+            {
+                activity.Recreate();
+            }
+        };
     }
 
     async void Setup()

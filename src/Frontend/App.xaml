@@ -6,12 +6,4 @@
     x:Class="Frontend.App"
     windows:Application.ImageDirectory="Assets"
 >
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Application.Resources>
 </Application>
