@@ -7,6 +7,15 @@
     windows:Application.ImageDirectory="Assets"
 >
     <Application.Resources>
-        <ResourceDictionary />
+        <ResourceDictionary>
+            <!-- Workaround: Styles.xaml and Colors.xaml are added as an workaround for dynamic theme change problems
+                which are stated in the following issue: https://github.com/dotnet/maui/issues/15359 . This workaround
+                can be removed after the PR https://github.com/dotnet/maui/pull/15449 is merged. -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <!-- End of Workaround -->
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

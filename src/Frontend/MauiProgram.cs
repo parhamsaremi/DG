@@ -35,6 +35,17 @@ public static class MauiProgram
             cfg["ApiKey"]
         ));
 #endif
+
+        // We have to add these mappings to fix the border color of text input widgets (Picker, Entry, Editor)
+        // when the android theme changes when the app is open (issue: https://github.com/dotnet/maui/issues/15359).
+        // We have to add this because in the current version of Maui, there are problems with dynamic app theme
+        // change. In the future once the following PR is merged (PR: https://github.com/dotnet/maui/pull/15449)
+        // and released, we'll be able to remove this workaround.
+        // Once PR is merged, Platforms/Android/AndroidExtraMappers.cs file can be removed.
+#if ANDROID
+        AndroidExtraMappers.AddMappers();
+#endif
+
         return builder.Build();
     }
 }
