@@ -3,6 +3,13 @@ using ZXing.Net.Maui;
 using ZXing.Net.Maui.Controls;
 using Microsoft.Extensions.Configuration;
 
+#if ANDROID
+using Microsoft.Maui.Handlers;
+using AndroidX.AppCompat.Widget;
+using Microsoft.Maui.Platform;
+using Android.Graphics;
+#endif
+
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
@@ -31,6 +38,36 @@ public static class MauiProgram
             cfg["ProjectId"],
             cfg["ApiKey"]
         ));
+#endif
+#if ANDROID
+        void MapTextColorToBorderColor(IViewHandler handler, Color color)
+        {
+            if (handler.PlatformView is AppCompatEditText editText)
+            {
+                var colorFilter = new PorterDuffColorFilter(color, PorterDuff.Mode.SrcAtop);
+                editText.Background.SetColorFilter(colorFilter);
+            }
+        }
+        EntryHandler.Mapper.AppendToMapping(
+                        "TextColor",
+                        (IEntryHandler handler, IEntry view) => {
+                            MapTextColorToBorderColor(handler, view.TextColor.ToPlatform());
+                        }
+                    );
+
+        EditorHandler.Mapper.AppendToMapping(
+                        "TextColor",
+                        (IEditorHandler handler, IEditor view) => {
+                            MapTextColorToBorderColor(handler, view.TextColor.ToPlatform());
+                        }
+                    );
+
+        PickerHandler.Mapper.AppendToMapping(
+                        "TextColor",
+                        (IPickerHandler handler, IPicker view) => {
+                            MapTextColorToBorderColor(handler, view.TextColor.ToPlatform());
+                        }
+                    );
 #endif
         return builder.Build();
     }
