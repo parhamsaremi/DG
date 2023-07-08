@@ -16,6 +16,9 @@ jobs:
     - uses: actions/checkout@v1
       with:
         submodules: false
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
     - name: Install prettier&commitlint dependencies
       run: |
         apt update
@@ -28,7 +31,7 @@ jobs:
     - name: Check XAML style with prettier
       run: |
         sudo npm install --save-dev prettier @prettier/plugin-xml
-        ./node_modules/.bin/prettier --xml-whitespace-sensitivity ignore --tab-width 4 --prose-wrap preserve --write '**/*.xaml'
+        ./node_modules/.bin/prettier --plugin @prettier/plugin-xml --xml-whitespace-sensitivity ignore --tab-width 4 --prose-wrap preserve --write '**/*.xaml'
         git diff --exit-code
 
     - name: Install .NET6
